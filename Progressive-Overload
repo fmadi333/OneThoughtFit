@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progressive Overload - One Thought Fit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        /* Hero Section with Orange Gradient */
+        .hero {
+            background: linear-gradient(to bottom, #d84315, #ffcc80);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 72px);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 3vw, 24px);
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-download {
+            background: white;
+            color: #d84315;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-download:hover {
+            background: #f5f5f5;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 100px 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .app-mockup {
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-mockup img {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 40px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 100px 40px;
+        }
+
+        .how-it-works h2 {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .how-it-works .subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 80px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to bottom, #d84315, #ffcc80);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .step p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 900;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            padding: 30px;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(to bottom, #d84315, #ffcc80);
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .cta p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: #999;
+            padding: 40px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .about,
+            .how-it-works,
+            .features,
+            .cta {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">One Thought Fit</a>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#apps">Apps</a></li>
+                <li><a href="index.html#coaching">Coaching</a></li>
+                <li><a href="index.html#shop">Shop</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Progressive Overload</h1>
+            <p>Track your gains. Increase your strength. Build the body you've always wanted.</p>
+            <div class="download-buttons">
+                <a href="#" class="btn btn-download">Download on App Store</a>
+                <a href="#" class="btn btn-download">Get it on Google Play</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="app-mockup">
+                    <img src="IMG_0057.png" alt="Progressive Overload App Screenshot">
+                </div>
+                <div class="about-text">
+                    <h2>The Foundation of All Strength Training</h2>
+                    <p>
+                        Progressive overload is the single most important principle in resistance training. 
+                        It's simple: to build muscle and strength, you need to gradually increase the demands 
+                        on your body over time.
+                    </p>
+                    <p>
+                        Our app makes this principle effortless to follow. No more guessing what weight you 
+                        lifted last week. No more complicated spreadsheets. Just simple, effective tracking 
+                        that helps you beat your previous best every single workout.
+                    </p>
+                    <p>
+                        Whether you're a beginner or an experienced lifter, Progressive Overload gives you 
+                        the structure you need to make consistent gains without the hassle of complex tracking systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How to Use the App</h2>
+            <p class="subtitle">Six simple steps to maximize your strength gains</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Select Your Exercise</h3>
+                    <p>Choose from your saved exercises or add a new one. Organize by muscle group (Chest, Back, Legs, etc.) for easy navigation.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>View Your History</h3>
+                    <p>See your previous workouts for this exercise. The app shows your last weight, reps, and sets so you know exactly what to beat.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Log Your Sets</h3>
+                    <p>Record each set as you complete it. Input the weight and reps you achieved. The app tracks multiple rep ranges (3-6, 6-10, 10-15) for optimal progression.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Beat Your Previous Best</h3>
+                    <p>Aim to do more than last time—whether that's more weight, more reps, or an additional set. Progressive overload in action!</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Track Your Progress</h3>
+                    <p>Watch your numbers climb week after week. The app visualizes your strength gains over time, keeping you motivated.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h3>Build Consistency</h3>
+                    <p>Show up, track your lifts, beat your numbers. Repeat. The app handles the complexity—you focus on getting stronger.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Built for Lifters</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">💪</div>
+                    <h3>Multiple Rep Ranges</h3>
+                    <p>Track different rep ranges for optimal muscle and strength development</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Visualization</h3>
+                    <p>See your strength gains charted over time</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Exercise Organization</h3>
+                    <p>Group exercises by muscle groups for easy workout navigation</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick Logging</h3>
+                    <p>Log your sets in seconds, right there in the gym</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Get Stronger?</h2>
+            <p>Download Progressive Overload today and start building real strength</p>
+            <div class="download-buttons">
+                <a href="#" class="btn btn-download">Download on App Store</a>
+                <a href="#" class="btn btn-download">Get it on Google Play</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 One Thought Fit. All rights reserved.</p>
+        <p style="margin-top: 10px;">
+            <a href="index.html">Back to Home</a> | 
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Support</a>
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,10 +1,688 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>One Thought Fit Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Thought Fit - Transform Your Fitness Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.3) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(20px, 3vw, 28px);
+            color: #333;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Intro Section */
+        .intro {
+            background: white;
+            text-align: center;
+        }
+
+        /* App Sections */
+        .app-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            padding: 120px 40px;
+        }
+
+        .app-section.reverse {
+            direction: rtl;
+        }
+
+        .app-section.reverse > * {
+            direction: ltr;
+        }
+
+        .calories-section {
+            background: white;
+        }
+
+        .overload-section {
+            background: #f9f9f9;
+        }
+
+        .app-content h2 {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .app-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .app-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-mockup {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 40px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .phone-mockup:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* Coaching Section */
+        .coaching {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .coaching h2,
+        .coaching p {
+            color: white;
+        }
+
+        .coaching .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Shop Section */
+        .shop {
+            background: white;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: #f9f9f9;
+            padding: 40px 30px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .product-placeholder {
+            height: 200px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-weight: 600;
+        }
+
+        /* Social Section */
+        .socials {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+        }
+
+        .socials h2,
+        .socials p {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .newsletter h2,
+        .newsletter p {
+            color: white;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 18px 40px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Feedback Section */
+        .feedback {
+            background: white;
+            text-align: center;
+        }
+
+        .feedback-form {
+            max-width: 600px;
+            margin: 60px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            padding: 18px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .feedback-form input:focus,
+        .feedback-form textarea:focus {
+            border-color: #667eea;
+        }
+
+        .feedback-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: #999;
+            padding: 60px 40px 40px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .app-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 80px 20px;
+            }
+
+            .app-content h2,
+            .app-content p {
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+
+        /* Scroll animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>This is a test page for One Thought Fit.</p>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">One Thought Fit</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#apps">Apps</a></li>
+                <li><a href="#coaching">Coaching</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>One Thought Fit</h1>
+            <p>Fitness begins with a single thought. Transform yours today.</p>
+            <div class="cta-buttons">
+                <a href="#apps" class="btn btn-primary">Discover Our Apps</a>
+                <a href="#coaching" class="btn btn-secondary">Work With Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro">
+        <div class="container">
+            <h2>Welcome to Your Journey</h2>
+            <p class="section-subtitle">
+                Fitness isn't just about moving your body—it's about the mindset that moves you. 
+                At One Thought Fit, we build tools and communities designed to bridge the gap 
+                between intention and action. One thought at a time.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Calories of Now -->
+    <section class="app-section calories-section" id="apps">
+        <div class="app-content">
+            <h2>The Calories of Now</h2>
+            <p>
+                Stop tracking yesterday. Stop worrying about tomorrow. Focus on the fuel you need right now. 
+                This revolutionary app brings mindful eating into the present moment, helping you maintain 
+                your ideal weight without the stress of traditional calorie counting.
+            </p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="app-image">
+            <div style="width: 350px; height: 700px; background: linear-gradient(to bottom, #eaf5ce, #9fd3c7); border-radius: 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; color: #4a7c73; font-size: 18px; font-weight: 600; text-align: center; padding: 40px;">
+                The Calories of Now<br>App Screenshot
+            </div>
+        </div>
+    </section>
+
+    <!-- Progressive Overload -->
+    <section class="app-section overload-section reverse">
+        <div class="app-content">
+            <h2>Progressive Overload</h2>
+            <p>
+                Track your gains. Increase your strength. Build muscle with the most important principle 
+                in resistance training. This simple, no-nonsense tracker helps you progressively overload 
+                your workouts and achieve new personal bests every session.
+            </p>
+            <a href="#" class="btn btn-primary">Start Lifting</a>
+        </div>
+        <div class="app-image">
+            <div style="width: 350px; height: 700px; background: linear-gradient(to bottom, #d84315, #ffcc80); border-radius: 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 600; text-align: center; padding: 40px;">
+                Progressive Overload<br>App Screenshot
+            </div>
+        </div>
+    </section>
+
+    <!-- Coaching Section -->
+    <section class="coaching" id="coaching">
+        <div class="container">
+            <h2>Commit to Being Fit</h2>
+            <p class="section-subtitle">
+                Apps are powerful tools, but sometimes you need a human connection to keep you on track. 
+                I offer 1-on-1 accountability coaching to help you navigate your fitness journey with 
+                personalized guidance and support.
+            </p>
+            <a href="#" class="btn btn-secondary">Book a Session</a>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="shop" id="shop">
+        <div class="container">
+            <h2>Shop One Thought Fit</h2>
+            <p class="section-subtitle">Gear and guides to support your journey</p>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-placeholder">Product 1</div>
+                    <h3>Training Guide</h3>
+                    <p>Complete workout program</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-placeholder">Product 2</div>
+                    <h3>Nutrition Plan</h3>
+                    <p>Customized meal planning</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-placeholder">Product 3</div>
+                    <h3>Fitness Gear</h3>
+                    <p>Premium equipment</p>
+                </div>
+            </div>
+            <br><br>
+            <a href="#" class="btn btn-primary">View All Products</a>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section class="socials">
+        <div class="container">
+            <h2>Follow the Journey</h2>
+            <p class="section-subtitle">Daily tips, workout clips, and motivation</p>
+            <div class="social-links">
+                <a href="#" class="social-link">📺 YouTube</a>
+                <a href="#" class="social-link">🎵 TikTok</a>
+                <a href="#" class="social-link">📸 Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay in the Loop</h2>
+            <p class="section-subtitle">Get weekly fitness tips, app updates, and exclusive content</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="feedback" id="contact">
+        <div class="container">
+            <h2>Send Feedback</h2>
+            <p class="section-subtitle">Have a suggestion? Want to share your success story?</p>
+            <form class="feedback-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 One Thought Fit. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">App Support</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Form handlers
+        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for subscribing! Check your email for confirmation.');
+            e.target.reset();
+        });
+
+        document.querySelector('.feedback-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your feedback! We\'ll get back to you soon.');
+            e.target.reset();
+        });
+    </script>
 </body>
 </html>

@@ -19,12 +19,10 @@
             overflow-x: hidden;
         }
 
-        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Sticky Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -76,7 +74,6 @@
             color: #666;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
             min-height: 100vh;
@@ -162,7 +159,6 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
-        /* Section Styles */
         section {
             padding: 100px 40px;
         }
@@ -188,13 +184,11 @@
             margin-right: auto;
         }
 
-        /* Intro Section */
         .intro {
             background: white;
             text-align: center;
         }
 
-        /* App Sections */
         .app-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -251,7 +245,6 @@
             transform: scale(1.05) rotate(2deg);
         }
 
-        /* Coaching Section */
         .coaching {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -267,7 +260,6 @@
             color: rgba(255,255,255,0.9);
         }
 
-        /* Shop Section */
         .shop {
             background: white;
             text-align: center;
@@ -305,7 +297,6 @@
             font-weight: 600;
         }
 
-        /* Social Section */
         .socials {
             background: #1a1a1a;
             color: white;
@@ -343,7 +334,6 @@
             transform: translateY(-3px);
         }
 
-        /* Newsletter Section */
         .newsletter {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             text-align: center;
@@ -387,7 +377,6 @@
             transform: translateY(-2px);
         }
 
-        /* Feedback Section */
         .feedback {
             background: white;
             text-align: center;
@@ -422,7 +411,6 @@
             resize: vertical;
         }
 
-        /* Footer */
         footer {
             background: #0a0a0a;
             color: #999;
@@ -448,7 +436,6 @@
             flex-wrap: wrap;
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             nav ul {
                 gap: 20px;
@@ -478,7 +465,6 @@
             }
         }
 
-        /* Scroll animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -496,7 +482,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
             <div class="logo">One Thought Fit</div>
@@ -510,7 +495,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>One Thought Fit</h1>
@@ -522,7 +506,6 @@
         </div>
     </section>
 
-    <!-- Intro Section -->
     <section class="intro">
         <div class="container">
             <h2>Welcome to Your Journey</h2>
@@ -534,7 +517,6 @@
         </div>
     </section>
 
-    <!-- The Calories of Now -->
     <section class="app-section calories-section" id="apps">
         <div class="app-content">
             <h2>The Calories of Now</h2>
@@ -546,13 +528,10 @@
             <a href="#" class="btn btn-primary">Learn More</a>
         </div>
         <div class="app-image">
-            <div style="width: 350px; height: 700px; background: linear-gradient(to bottom, #eaf5ce, #9fd3c7); border-radius: 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; color: #4a7c73; font-size: 18px; font-weight: 600; text-align: center; padding: 40px;">
-                The Calories of Now<br>App Screenshot
-            </div>
+            <img src="IMG_0064.jpg" alt="The Calories of Now App" class="phone-mockup">
         </div>
     </section>
 
-    <!-- Progressive Overload -->
     <section class="app-section overload-section reverse">
         <div class="app-content">
             <h2>Progressive Overload</h2>
@@ -564,13 +543,10 @@
             <a href="#" class="btn btn-primary">Start Lifting</a>
         </div>
         <div class="app-image">
-            <div style="width: 350px; height: 700px; background: linear-gradient(to bottom, #d84315, #ffcc80); border-radius: 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 600; text-align: center; padding: 40px;">
-                Progressive Overload<br>App Screenshot
-            </div>
+            <img src="IMG_0057.jpg" alt="Progressive Overload App" class="phone-mockup">
         </div>
     </section>
 
-    <!-- Coaching Section -->
     <section class="coaching" id="coaching">
         <div class="container">
             <h2>Commit to Being Fit</h2>
@@ -583,7 +559,6 @@
         </div>
     </section>
 
-    <!-- Shop Section -->
     <section class="shop" id="shop">
         <div class="container">
             <h2>Shop One Thought Fit</h2>
@@ -610,7 +585,6 @@
         </div>
     </section>
 
-    <!-- Social Section -->
     <section class="socials">
         <div class="container">
             <h2>Follow the Journey</h2>
@@ -623,7 +597,6 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
     <section class="newsletter">
         <div class="container">
             <h2>Stay in the Loop</h2>
@@ -635,7 +608,6 @@
         </div>
     </section>
 
-    <!-- Feedback Section -->
     <section class="feedback" id="contact">
         <div class="container">
             <h2>Send Feedback</h2>
@@ -649,7 +621,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2024 One Thought Fit. All rights reserved.</p>
         <div class="footer-links">
@@ -661,7 +632,6 @@
     </footer>
 
     <script>
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -671,7 +641,6 @@
             }
         });
 
-        // Form handlers
         document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
             e.preventDefault();
             alert('Thank you for subscribing! Check your email for confirmation.');

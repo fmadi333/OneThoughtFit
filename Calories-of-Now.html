@@ -181,6 +181,68 @@
             padding: 100px 40px;
         }
 
+        /* Charts Section */
+        .charts {
+            background: white;
+            padding: 100px 40px;
+        }
+
+        .charts h2 {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .charts .subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 80px;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .chart-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .chart-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #2c5f55;
+            font-weight: 700;
+        }
+
+        .chart-card p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #666;
+        }
+
         .how-it-works h2 {
             font-size: clamp(36px, 5vw, 48px);
             font-weight: 900;
@@ -351,6 +413,14 @@
             .cta {
                 padding: 60px 20px;
             }
+
+            .charts {
+                padding: 60px 20px;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -419,37 +489,65 @@
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Set Your Goals</h3>
-                    <p>Enter your current weight, target weight, and activity level. The app calculates your optimal daily caloric intake based on your goals.</p>
+                    <p>Enter your current weight, target weight, and timeframe. The app calculates your optimal daily caloric intake based on your goals.</p>
                 </div>
 
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Weigh In Daily</h3>
-                    <p>The app will monitor your progress and periodically adjust the pace of your calorie allowance if necessary.</p>
+                    <h3>Check Your Budget</h3>
+                    <p>Open the app anytime to see how many calories you can have right now. The number updates in real-time based on your pace for the day.</p>
                 </div>
 
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3>Log Your Meals</h3>
-                    <p>Quickly log what you eat. The app automatically deducts those calories from your allowance.</p>
+                    <p>Quickly log what you eat. The app automatically adjusts your remaining calorie budget for the rest of the day.</p>
                 </div>
 
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>When You're Hungry</h3>
-                    <p>The home screen will tell you how many calories you can have right now.  Eat what you wish, just keep the number above zero!</p>
+                    <h3>Stay Present</h3>
+                    <p>Focus on making the best choice right now. Don't worry about yesterday's mistakes or tomorrow's challenges. Just be present.</p>
                 </div>
 
                 <div class="step">
                     <div class="step-number">5</div>
-                    <h3>Adjustments are Automatic</h3>
-                    <p>The app is always reading your inputs and adjusting to keep you on track.  No stress, no guilt, just guidance.</p>
+                    <h3>Adjust as Needed</h3>
+                    <p>If you go over or under, the app automatically recalculates for the rest of your day. No stress, no guilt—just guidance.</p>
                 </div>
 
                 <div class="step">
                     <div class="step-number">6</div>
-                    <h3>Behavior and Results</h3>
-                    <p>Enjoy watching your progress on trend charts that measure control, consistency, and results.</p>
+                    <h3>Reach Your Goals</h3>
+                    <p>By staying present with your nutrition day after day, you'll naturally reach your ideal weight without the mental burden of traditional dieting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts">
+        <div class="container">
+            <h2>Track What Matters</h2>
+            <p class="subtitle">Three powerful charts that help you stay on track and reach your goals</p>
+            
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <img src="control-chart.png" alt="Control Chart" class="chart-image">
+                    <h3>Control</h3>
+                    <p>Stay within your personalized calorie range using a 7-day control chart. The green center line represents your ideal intake, while the dashed red lines show your acceptable variance. This statistical approach helps you understand your patterns and maintain consistency without obsessing over perfection.</p>
+                </div>
+
+                <div class="chart-card">
+                    <img src="consistency-chart.png" alt="Consistency Chart" class="chart-image">
+                    <h3>Consistency</h3>
+                    <p>Visualize your daily calorie intake over the past 30 days. The horizontal lines show your maintenance and target ranges. Most days should cluster around your target line—this consistency is what drives results. A few days above or below don't matter; it's the overall pattern that counts.</p>
+                </div>
+
+                <div class="chart-card">
+                    <img src="results-chart.png" alt="Results Chart" class="chart-image">
+                    <h3>Results</h3>
+                    <p>Watch your progress unfold with a 30-day weight trend chart. Each dot represents your daily weight, smoothed to show the true trend beyond daily fluctuations. See your total change, percentage lost, and current weight—concrete proof that your consistency is paying off.</p>
                 </div>
             </div>
         </div>

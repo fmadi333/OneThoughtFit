@@ -23,60 +23,92 @@
             scroll-behavior: smooth;
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 20px 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
 
-        nav.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
-        }
+nav.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+}
 
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-      nav .logo-link {
+nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 nav .logo-img {
-    height: 50px;
+    height: 45px;
     width: auto;
 }
-        }
 
-        nav ul {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    align-items: center;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #1a1a1a;
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
+nav a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s;
+}
 
-        nav a:hover {
-            color: #666;
-        }
+nav a:hover {
+    color: #667eea;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    nav .container {
+        padding: 0 20px;
+    }
+    
+    nav .logo-img {
+        height: 35px;
+    }
+    
+    nav ul {
+        gap: 15px;
+    }
+    
+    nav a {
+        font-size: 13px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    nav ul {
+        gap: 10px;
+    }
+    
+    nav a {
+        font-size: 12px;
+    }
+}
 
         .hero {
             background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);

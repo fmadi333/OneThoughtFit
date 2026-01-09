@@ -54,12 +54,38 @@ nav .logo-link {
     display: flex;
     align-items: center;
     text-decoration: none;
+    gap: 12px;
     z-index: 1001;
 }
 
 nav .logo-img {
-    height: 45px;
+    height: 60px;
     width: auto;
+}
+
+nav .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 2px;
+}
+
+nav .logo-text span {
+    font-weight: 900;
+    color: #1a1a1a;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    nav .logo-img {
+        height: 40px;
+    }
+    
+    nav .logo-text span {
+        font-size: 12px;
+    }
 }
 
 /* Hamburger Menu - Hidden on Desktop */
@@ -578,8 +604,12 @@ nav .logo-img {
 <nav id="navbar">
     <div class="container">
         <a href="index.html" class="logo-link">
-            <img src="OTF-Logo.png" alt="One Thought Fit" class="logo-img">
-        </a>
+    <img src="OTF-Logo.png" alt="One Thought Fit" class="logo-img">
+    <div class="logo-text">
+        <span>One Thought</span>
+        <span>Fit</span>
+    </div>
+</a>
         
         <!-- Hamburger Icon -->
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">

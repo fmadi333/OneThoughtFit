@@ -22,7 +22,6 @@
         html {
             scroll-behavior: smooth;
         }
-
 /* Navigation */
 nav {
     position: fixed;
@@ -48,12 +47,14 @@ nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 nav .logo-link {
     display: flex;
     align-items: center;
     text-decoration: none;
+    z-index: 1001;
 }
 
 nav .logo-img {
@@ -61,14 +62,48 @@ nav .logo-img {
     width: auto;
 }
 
-nav ul {
+/* Hamburger Menu - Hidden on Desktop */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #1a1a1a;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Navigation Menu */
+.nav-menu {
     display: flex;
     gap: 40px;
     list-style: none;
     align-items: center;
+    margin: 0;
 }
 
-nav a {
+.nav-link {
     text-decoration: none;
     color: #1a1a1a;
     font-weight: 500;
@@ -76,7 +111,7 @@ nav a {
     transition: color 0.3s;
 }
 
-nav a:hover {
+.nav-link:hover {
     color: #667eea;
 }
 
@@ -90,23 +125,44 @@ nav a:hover {
         height: 35px;
     }
     
-    nav ul {
-        gap: 15px;
+    /* Show Hamburger */
+    .hamburger {
+        display: flex;
     }
     
-    nav a {
-        font-size: 13px;
-    }
-}
-
-/* Extra small screens */
-@media (max-width: 480px) {
-    nav ul {
-        gap: 10px;
+    /* Mobile Menu */
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 60px;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 30px 0;
+        gap: 0;
     }
     
-    nav a {
-        font-size: 12px;
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu li {
+        padding: 15px 0;
+        border-bottom: 1px solid #f0f0f0;
+        width: 100%;
+    }
+    
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        font-size: 18px;
+        display: block;
+        width: 100%;
     }
 }
 
@@ -518,19 +574,30 @@ nav a:hover {
     </style>
 </head>
 <body>
-    <nav id="navbar">
-        <div class="container">
-            <a href="index.html" class="logo-link">
-    <img src="OTF-Logo.png" alt="One Thought Fit" class="logo-img">
-</a>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#apps">Apps</a></li>
-                <li><a href="#coaching">Coaching</a></li>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Navigation -->
+<nav id="navbar">
+    <div class="container">
+        <a href="index.html" class="logo-link">
+            <img src="OTF-Logo.png" alt="One Thought Fit" class="logo-img">
+        </a>
+        
+        <!-- Hamburger Icon -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- Navigation Menu -->
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#apps" class="nav-link">Apps</a></li>
+            <li><a href="#coaching" class="nav-link">Coaching</a></li>
+            <li><a href="#shop" class="nav-link">Shop</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </div>
+</nav>
 
     <section class="hero" id="home">
         <div class="hero-content">
@@ -680,7 +747,30 @@ nav a:hover {
             alert('Thank you for subscribing! Check your email for confirmation.');
             e.target.reset();
         });
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
 
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
        
     </script>
 </body>

@@ -49,11 +49,15 @@
             align-items: center;
         }
 
-        nav .logo {
-            font-size: 24px;
-            font-weight: 900;
-            color: #1a1a1a;
-            letter-spacing: -0.5px;
+      nav .logo-link {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo-img {
+    height: 50px;
+    width: auto;
+}
         }
 
         nav ul {
@@ -484,8 +488,9 @@
 <body>
     <nav id="navbar">
         <div class="container">
-            <div class="logo">One Thought Fit</div>
-            <ul>
+            <a href="index.html" class="logo-link">
+    <img src="OTF-Logo.png" alt="One Thought Fit" class="logo-img">
+</a>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#apps">Apps</a></li>
                 <li><a href="#coaching">Coaching</a></li>
